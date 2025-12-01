@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -15,4 +17,9 @@ public class EmployeeDto {
     private String firstName;
     private String lastName;
     private String email;
+    private DepartmentDto department;
+    private String role;
+    private String status;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }

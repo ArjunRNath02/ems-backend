@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin("*")
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/employees")
@@ -26,7 +27,7 @@ public class EmployeeController {
     // Build Get Employee REST API
     @GetMapping("{id}")
     public ResponseEntity<EmployeeDto> getEmployeeById(@PathVariable("id") Long employeeId) {
-        EmployeeDto employeeDto = employeeService.getEmployeeById((employeeId));
+        EmployeeDto employeeDto = employeeService.getEmployeeById(employeeId);
         return ResponseEntity.ok(employeeDto);
     }
 
@@ -34,7 +35,7 @@ public class EmployeeController {
     @GetMapping()
     public ResponseEntity<List<EmployeeDto>> getAllEmployees() {
         List<EmployeeDto> employees = employeeService.getAllEmployees();
-        return ResponseEntity.ok(employees);
+        return ResponseEntity.ok().body(employees);
     }
 
     // Build Update Employee REST API

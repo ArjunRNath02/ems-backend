@@ -9,16 +9,29 @@ public class EmployeeMapper {
                 employee.getId(),
                 employee.getFirstName(),
                 employee.getLastName(),
-                employee.getEmail()
+                employee.getEmail(),
+                employee.getDepartment() != null ?
+                        DepartmentMapper.mapToDepartmentDto(employee.getDepartment()) : null,
+                employee.getRole(),
+                employee.getStatus(),
+                employee.getCreatedAt(),
+                employee.getUpdatedAt()
         );
     }
 
-    public static Employee mapToEmployee(EmployeeDto employeeDto) {
-        return new Employee(
-                employeeDto.getId(),
-                employeeDto.getFirstName(),
-                employeeDto.getLastName(),
-                employeeDto.getEmail()
-        );
+    public static Employee mapToEmployee(EmployeeDto dto) {
+        Employee emp = new Employee();
+
+        emp.setId(dto.getId());
+        emp.setFirstName(dto.getFirstName());
+        emp.setLastName(dto.getLastName());
+        emp.setEmail(dto.getEmail());
+        emp.setRole(dto.getRole());
+        emp.setStatus(dto.getStatus());
+        emp.setCreatedAt(dto.getCreatedAt());
+        emp.setUpdatedAt(dto.getUpdatedAt());
+
+        return emp;
     }
+
 }
